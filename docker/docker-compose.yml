@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  nginx:
+    depends_on:
+      - php
+    image: nginx:latest
+    restart: always
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d
+      - ../:/var/www
+    ports:
+      - 8000:80
+ 
+  php:
+    build:
+      context: ./php/
+    depends_on:
+      - db
+    restart: always
+    volumes:
+      - ../:/var/www
+ 
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
