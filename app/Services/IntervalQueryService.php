@@ -8,6 +8,9 @@ class IntervalQueryService
 {
     public function buildQuery(int $start, ?string $endOption)
     {
+        if ($endOption !== null && strtolower($endOption) !== 'null' && $start > $endOption){
+            list($start, $endOption) = array($endOption, $start);
+        }
         $query = Interval::where('start', '>=', $start);
 
         if ($endOption !== null) {
