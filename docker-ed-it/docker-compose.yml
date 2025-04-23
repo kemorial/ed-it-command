@@ -13,6 +13,7 @@ services:
       - 8005:80
 
   php:
+    container_name: "php-ed-it"
     build:
       context: ../
     depends_on:
