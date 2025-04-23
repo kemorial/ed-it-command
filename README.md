@@ -21,12 +21,10 @@
 3. Установите все необходимые зависимости:
     ```bash
     cd docker-ed-it/  \
-    && docker composer up -d \ 
+    && docker compose up -d \ 
     && cd ../ \
     && cp .env.example .env \
-    && docker exec php-ed-it bash -c \
-    "php artisan migrate\
-    && artisan db:seed --class=IntervalSeeder"
+    && docker exec php-ed-it bash -c "php artisan migrate && artisan db:seed --class=IntervalSeeder"
     ```
 ## Использование
 
