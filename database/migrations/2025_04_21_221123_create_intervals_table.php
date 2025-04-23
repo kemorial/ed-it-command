@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->integer('start');
             $table->integer('end')->nullable()->default(null);
+            $table->index('start');
+            $table->index('end');
+            $table->index(['start', 'end']);
         });
     }
 
